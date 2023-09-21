@@ -10,11 +10,7 @@ export class MainController extends BaseController {
   registerRoutes(app: IRouter): void {
     const router = express.Router();
 
-    router.use(express.raw({ type: "application/json" }));
-    router.use(express.urlencoded({ extended: true }));
-    this.configureRoutes(router);
-
-    registerEndpoint(router, "/login", this.login);
+    registerEndpoint(router, "/cats", this.login);
     app.use("/", router);
   }
 
@@ -22,9 +18,4 @@ export class MainController extends BaseController {
     console.log("cats are awesome");
   };
 
-  private configureRoutes(app: express.IRouter) {
-    const router = express.Router();
-
-    app.use("/core", router);
-  }
 }
